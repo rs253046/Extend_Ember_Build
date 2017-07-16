@@ -6,6 +6,7 @@ module.exports = function(environment) {
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
+    failBuildOnJshint: false,
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -14,12 +15,14 @@ module.exports = function(environment) {
     },
 
     APP: {
+
       // Here you can pass flags/options to your application instance
       // when it is created
     }
   };
 
   if (environment === 'development') {
+    ENV.failBuildOnJshint = false;
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -28,6 +31,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'test') {
+    ENV.failBuildOnJshint = false;
     // Testem prefers this...
     ENV.locationType = 'none';
 
@@ -39,7 +43,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.failBuildOnJshint = true;
   }
 
   return ENV;

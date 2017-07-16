@@ -7,4 +7,4 @@ export default Ember.Route.extend({
       description: "Every build will fail until it passes jshint."
 		});
 	}
-})
+});

@@ -64,7 +64,7 @@ if (isProductionBuild()) {
 
     return new Funnel(lintedAddon, {
       srcDir: '/',
-      destDir: ''
+      destDir: this.name + '/tests/'
     });
   }
 
@@ -77,8 +77,8 @@ if (isProductionBuild()) {
 
     return new Funnel(tree, {
       include: includePatterns,
-      destDir: '',
-      description: ''
+      destDir: 'modules/' + this.moduleName(),
+      description: 'Funnel: Addon JS'
     });
   }
 }
@@ -115,6 +115,10 @@ if (isProductionBuild() || isDevelopmentBuild())  {
 
     if (isProductionBuild()) {
       this.failOnAnyError = true;
+      errors = errors.split('/');
+      errors.shift();
+      errors.shift();
+      errors = errors.join('/');
     }
 
     if (this.failOnAnyError && errors.length > 0){
